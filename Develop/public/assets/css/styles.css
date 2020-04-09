@@ -1,9 +1,11 @@
+/* element selectors */
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
 }
 
+/* class selectors */
 .save-note {
   display: none;
 }

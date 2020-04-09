@@ -9,10 +9,8 @@ const router = express.Router();
 
 const dbFilePath = path.join(__dirname,"../db/db.json");
 
-
 //GET `/api/notes` - read the `db.json` file and return all saved notes as JSON.
 router.get("/notes",function(req,res) { 
-    console.log("hit get notes api"); 
     fs.readFile(dbFilePath,"utf8",function(error,fileData) {
         if(error) throw error; 
         console.log(fileData); 
@@ -20,7 +18,8 @@ router.get("/notes",function(req,res) {
     }); 
 }); 
 
-//POST `/api/notes` - receive a new note to save on the request body, add it to the `db.json` file, and then return the new note to the client.
+//POST `/api/notes` - receive a new note to save on the request body, add it to the `db.json` file
+//then return the new note to the client.
 router.post("/notes",function(req,res) {
     fs.readFile(dbFilePath,"utf8",function(error,fileData) {
         if(error) throw error; 
@@ -34,12 +33,9 @@ router.post("/notes",function(req,res) {
         }); 
         
     }); 
-    
-
 }); 
 
 //DELETE `/api/notes/:id` - receive a query parameter containing the id of a note to delete
-//This means you'll need to find a way to give each note a unique `id` when it's saved. In order to delete a note, you'll need to read all notes from the `db.json` file, remove the note with the given `id` property, and then rewrite the notes to the `db.json` file.
 router.delete("/notes/:id",function(req,res) {
     const id = req.params.id;
     fs.readFile(dbFilePath,"utf8",function(error,fileData) {

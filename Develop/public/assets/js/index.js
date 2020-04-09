@@ -1,3 +1,6 @@
+// handles event listening and ajax requests 
+
+//grab elements from the page 
 var $noteTitle = $(".note-title");
 var $noteText = $(".note-textarea");
 var $saveNoteBtn = $(".save-note");
@@ -141,6 +144,7 @@ var getAndRenderNotes = function () {
     });
 };
 
+//add event listeners 
 $saveNoteBtn.on("click", handleNoteSave);
 $noteList.on("click", ".list-group-item", handleNoteView);
 $newNoteBtn.on("click", handleNewNoteView);
